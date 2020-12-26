@@ -63,10 +63,10 @@ function checkStrength (pass){
     const medium = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{8,})");
     const weak = new RegExp("^(?=.{6,})");
     const veryWeak = new RegExp("^(?=.{1,})");
-    console.log(strong.test(pass))
-    if (strong.test(pass)){strength.innerHTML="strong"}
-    else if (medium.test(pass)){strength.innerHTML="medium"}
-    else if (weak.test(pass)){strength.innerHTML="weak"}
-    else if (veryWeak.test(pass)){strength.innerHTML="very weak"}
+    strength.className='';
+    if (strong.test(pass)){strength.innerHTML="strong"; strength.classList.toggle('strong')}
+    else if (medium.test(pass)){strength.innerHTML="medium"; strength.classList.toggle('medium')}
+    else if (weak.test(pass)){strength.innerHTML="weak"; strength.classList.toggle('weak')}
+    else if (veryWeak.test(pass)){strength.innerHTML="very weak"; strength.classList.toggle('veryWeak')}
     else {strength.innerHTML="no password"}
 }
