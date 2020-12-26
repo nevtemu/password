@@ -30,4 +30,17 @@ function generateRandom (what, howMany) {
     }
     return out;
 }
-console.log(generateRandom('number', 500))
+const shuffle = array => { //this function only shuffles items in array
+    for (let x = array.length - 1; x > 0; x--) {
+      let y = Math.floor(Math.random() * (x + 1));
+      [array[x], array[y]] = [array[y], array[x]];
+    }
+  };
+
+
+let str;
+str = generateRandom('number', 10) + generateRandom('lowerCase', 10) + generateRandom('upperCase', 10) + generateRandom('special', 10);
+let arr = str.split("");
+shuffle(arr)
+str = arr.join("");
+console.log(str)
