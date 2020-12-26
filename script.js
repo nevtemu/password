@@ -1,3 +1,5 @@
+const password = document.querySelector("#output");
+const strength = document.querySelector("#strength");
 function generateRandom (what, howMany) {
     let out = "";
     let charLength, charPosition;
@@ -44,16 +46,27 @@ function generate (){
     let own = document.querySelector("#own").value;
     let str = generateRandom('number', number) + generateRandom('lowerCase', lowerCase) + generateRandom('upperCase', upperCase) + generateRandom('special', special) + own;
     let arr = str.split("");
-    shuffle(arr)
+    shuffle(arr);
     str = arr.join("");
-    output(str)
+    output(str);
+    checkStrength(str);
 }
-function output (password){
-    document.querySelector("#output").innerHTML = password;
+function output (pass){
+    password.innerHTML = pass;
 }
-// let str;
-// str = generateRandom('number', 10) + generateRandom('lowerCase', 10) + generateRandom('upperCase', 10) + generateRandom('special', 10);
-// let arr = str.split("");
-// shuffle(arr)
-// str = arr.join("");
-// console.log(str)
+function copy() {
+    navigator.clipboard.writeText(password.innerHTML)
+    .then(() => {}, (err) =>console.error('When copied, got error:', err));
+}
+function checkStrength (pass){
+    const strong = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#%\-\/\;\:\>\<\=\_\`\~\"\|\{\}\$\?\^\*\+\.\&\'\,])(?=.{8,})");//missing \[]
+    const medium = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{8,})");
+    const weak = new RegExp("^(?=.{6,})");
+    const veryWeak = new RegExp("^(?=.{1,})");
+    console.log(strong.test(pass))
+    if (strong.test(pass)){strength.innerHTML="strong"}
+    else if (medium.test(pass)){strength.innerHTML="medium"}
+    else if (weak.test(pass)){strength.innerHTML="weak"}
+    else if (veryWeak.test(pass)){strength.innerHTML="very weak"}
+    else {strength.innerHTML="no password"}
+}
