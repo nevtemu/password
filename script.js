@@ -1,35 +1,33 @@
 function generateRandom (what, howMany) {
     let out = "";
+    let charLength, charPosition;
     switch (what){
         case "number":
-            while (howMany--){
-                let r = Math.floor(Math.random() * 10);
-                let x = r += 48;
-                out += String.fromCharCode(x);    
-            }
+            charLength = 10;
+            charPosition = 48;
         break;
         case "upperCase":
-                while (howMany--){
-                    let r = Math.floor(Math.random() * 25);
-                    let x = r += 65;
-                    out += String.fromCharCode(x);    
-                }
+            charLength = 25;
+            charPosition = 65;
         break;
         case "lowerCase":
-                while (howMany--){
-                    let r = Math.floor(Math.random() * 25);
-                    let x = r += 97;
-                    out += String.fromCharCode(x);    
-                }
+            charLength = 25;
+            charPosition = 97;
         break;
-        case "special": 
-            while (howMany--){
-                let r = Math.floor(Math.random() * 32);
-                let x = r += r > 14 ? ( r > 21 ? ( r > 27 ? 95 : 69) : 43) : 33;
-                out += String.fromCharCode(x);    
-            }    
+        case "special": //excluding [space] character
+            charLength = 32;            
         break;
+    }
+    while (howMany--){
+        let r = Math.floor(Math.random() * charLength);
+        let x;
+        if (what === "special"){
+            x = r += r > 14 ? ( r > 21 ? ( r > 27 ? 95 : 69) : 43) : 33;
+        } else {
+            x = r += charPosition;
+        }
+        out += String.fromCharCode(x);    
     }
     return out;
 }
-console.log(generateRandom('special', 200))
+console.log(generateRandom('number', 500))
