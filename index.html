@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Random password generator</title>
+    <script src="./script.js"></script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="heading">Coose desired password parameters:</div>
+    <label for="number">Numbers of digits</label> <input type="range" name="number" id="number" value="2" min="0" max="10">
+    <label for="lowerCase">Numbers of lower case letters</label> <input type="range" name="lowerCase" id="lowerCase" value="6" min="0" max="10">
+    <label for="upperCase">Numbers of upper case letters</label> <input type="range" name="upperCase" id="upperCase" value="2" min="0" max="10">
+    <label for="special">Numbers of upper case letters</label> <input type="range" name="special" id="special" value="2" min="0" max="10">
+    <label for="own"></label><input type="text" name="own" id="own">
+    <input type="button" value="Generate" onclick="generate()">
+    <div class="output" id="output"></div><input type="button" value="Copy" onclick="">
+    <div class="strength"></div>
+</body>
+</html>

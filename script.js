@@ -36,11 +36,24 @@ const shuffle = array => { //this function only shuffles items in array
       [array[x], array[y]] = [array[y], array[x]];
     }
   };
-
-
-let str;
-str = generateRandom('number', 10) + generateRandom('lowerCase', 10) + generateRandom('upperCase', 10) + generateRandom('special', 10);
-let arr = str.split("");
-shuffle(arr)
-str = arr.join("");
-console.log(str)
+function generate (){
+    let number = document.querySelector("#number").value;
+    let lowerCase = document.querySelector("#lowerCase").value;
+    let upperCase = document.querySelector("#upperCase").value;
+    let special = document.querySelector("#special").value;
+    let own = document.querySelector("#own").value;
+    let str = generateRandom('number', number) + generateRandom('lowerCase', lowerCase) + generateRandom('upperCase', upperCase) + generateRandom('special', special) + own;
+    let arr = str.split("");
+    shuffle(arr)
+    str = arr.join("");
+    output(str)
+}
+function output (password){
+    document.querySelector("#output").innerHTML = password;
+}
+// let str;
+// str = generateRandom('number', 10) + generateRandom('lowerCase', 10) + generateRandom('upperCase', 10) + generateRandom('special', 10);
+// let arr = str.split("");
+// shuffle(arr)
+// str = arr.join("");
+// console.log(str)
