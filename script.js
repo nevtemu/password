@@ -70,3 +70,12 @@ function checkStrength (pass){
     else if (veryWeak.test(pass)){strength.innerHTML="very weak"; strength.classList.toggle('veryWeak')}
     else {strength.innerHTML="no password"}
 }
+
+const range = document.getElementsByName('rangeInput');
+const setValue = (event)=>{
+    document.getElementById(`${event.target.id}Value`).innerHTML = event.target.value;
+};
+for (let field of range){
+    document.getElementById(`${field.id}Value`).innerHTML = field.value;
+    field.addEventListener('input', setValue)
+}

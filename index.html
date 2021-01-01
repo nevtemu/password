@@ -7,17 +7,55 @@
     <title>Random password generator</title>
     <script src="./script.js" defer></script>
     <link rel="stylesheet" href="./style.css">
-    <link rel="shortcut icon" href="./src/favicon.png" type="image/x-icon">
+    <link rel="icon" href="./src/favicon.png" type="image/x-icon">
 </head>
 <body>
-    <div class="heading">Coose desired password parameters:</div>
-    <label for="number">Numbers of digits</label> <input type="range" name="number" id="number" value="2" min="0" max="10"> <br>
-    <label for="lowerCase">Numbers of lower case letters</label> <input type="range" name="lowerCase" id="lowerCase" value="6" min="0" max="10"> <br>
-    <label for="upperCase">Numbers of upper case letters</label> <input type="range" name="upperCase" id="upperCase" value="2" min="0" max="10"> <br>
-    <label for="special">Numbers of special characters</label> <input type="range" name="special" id="special" value="2" min="0" max="10"> <br>
-    <label for="own">Your desired symbol to be included</label><input type="text" name="own" id="own"> <br>
-    <input type="button" value="Generate" onclick="generate()">
-    <div class="output" id="output"></div><input type="button" value="Copy" onclick="copy()">
+    <div class="heading">Choose desired password parameters:</div>
+    <!-- Numbers -->
+    <div class="row">
+      <div class="label">Numbers of digits</div>
+      <div class="slider">
+        <input class="sliderRange" id="number" name="rangeInput" type="range" value="2" min="0" max="10">
+        <span class="sliderValue" id="numberValue">0</span>
+      </div>
+    </div>
+    <!-- lower letters -->
+    <div class="row">
+      <div class="label">Numbers of lower case letters</div>
+      <div class="slider">
+        <input class="sliderRange" id="lowerCase" name="rangeInput" type="range" value="3" min="0" max="10">
+        <span class="sliderValue" id="lowerCaseValue">0</span>
+      </div>
+    </div>
+    <!-- upper letters -->
+    <div class="row">
+      <div class="label">Numbers of upper case letters</div>
+      <div class="slider">
+        <input class="sliderRange" id="upperCase" name="rangeInput" type="range" value="2" min="0" max="10">
+        <span class="sliderValue" id="upperCaseValue">0</span>
+      </div>
+    </div>
+    <!-- special characters -->
+    <div class="row">
+      <div class="label">Numbers of special characters</div>
+      <div class="slider">
+        <input class="sliderRange" id="special" name="rangeInput" type="range" value="1" min="0" max="10">
+        <span class="sliderValue" id="specialValue">0</span>
+      </div>  
+    </div>
+    <!-- user's preference -->
+    <div class="row">
+      <div class="label">Your desired symbol to be included</div>
+      <input type="text" name="own" id="own">
+    </div>
+
+    <div class="row">
+      <input type="button" value="Generate" onclick="generate()">
+      <div class="output" id="output">
+      </div><input type="button" value="Copy" onclick="copy()">
+    </div>
+
     <div class="strength"><span>Your password strength:</span><span id="strength">No password</span></div>
+
 </body>
 </html>
