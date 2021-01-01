@@ -50,6 +50,7 @@ function generate (){
     str = arr.join("");
     output(str);
     checkStrength(str);
+    calculateDifficulty(str)
 }
 function output (pass){
     password.innerHTML = pass;
@@ -78,4 +79,23 @@ const setValue = (event)=>{
 for (let field of range){
     document.getElementById(`${field.id}Value`).innerHTML = field.value;
     field.addEventListener('input', setValue)
+}
+
+function calculateDifficulty (pass){
+    const passLength = pass.length;
+    let passChar = 0;
+    const numberTest = RegExp("^(?=.*[0-9])");
+    const lowerCaseTest = RegExp("^(?=.*[a-z])");
+    const upperCaseTest = RegExp("^(?=.*[A-Z])");
+    const specialTest = RegExp("^(?=.*[!@#%\-\/\;\:\>\<\=\_\`\~\"\|\{\}\$\?\^\*\+\.\&\'\,])");
+    if (numberTest.test(pass)){passChar+=10};
+    if (lowerCaseTest.test(pass)){passChar+=25};
+    if (upperCaseTest.test(pass)){passChar+=25};
+    if (specialTest.test(pass)){passChar+=32};
+    let combinations = BigInt(Math.pow(passChar, passLength));
+    const CRACKING_POWER = BigInt(632000000000); //this amount of combinations per second
+    let timeToSolve = Number(combinations/CRACKING_POWER); //in seconds
+    let difficulty = timeToSolve > 0 ? (timeToSolve > 60? ( timeToSolve > 3600 ? (timeToSolve > 86400 ? (timeToSolve > 31536000? `${Math.ceil(timeToSolve/31536000)} years`: `${Math.ceil(timeToSolve/86400)} days`): `${Math.ceil(timeToSolve/3600)} hrs`): `${Math.ceil(timeToSolve/60)} min`): `${Math.ceil(timeToSolve)} sec`) : `instant`;
+    // let timeToSolve = new Date(Number(combinations/CRACKING_POWER) * 1000).toISOString(); 
+    console.log(difficulty);
 }
