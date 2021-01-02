@@ -32,6 +32,7 @@ For convinience (to avoid selecting and coping the password) added "copy" button
 
 ## Password strength    
 Password strength is checked in two ways:   
+       
 __Based on type of characters included and password length.__    
 For this check I used classic regular expressions. This is my criteria:   
      
@@ -43,6 +44,8 @@ Medium             |8                             |combination of any two: small
 Strong             |8                             |at least one of each: small letter, capital letters, number, special character   |`^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#%\-\/\;\:\>\<\=\_\~\"\|\{\}\$\?\^\*\+\.\&\'\,])(?=.{8,})`
      
 Alternatively can use `^(?=.*[\d])` for all digits and `^(?=.*[\W])` for all non-word characters (alphanumeric and underscore).     
+      
+
 __Based on time to crack the password.__    
 For this check I used `Math.pow()` function to find total number of possible combinations depending on used settings. The more types of characters you select and the longer your password, the more combination can be there with such settings.    
 My initial thought was to add together ranges of all included character types and calculate them to power of password length. But to feature in user preferred symbol input I had to use regular expressions again to test if generated password includes each type of character (since I don't know what type of character user will input).     
