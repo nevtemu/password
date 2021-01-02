@@ -28,7 +28,8 @@ I considered also selecting random element of string or array to get random char
 Also numbers are easy to generate with `Math.random()` function, but I decided to stick with same method for all character types.
 
 ## Copy button
-For convinience (to avoid selecting and coping the password) added "copy" button. On lick it will move generated password into clipboard. This implemented using clipboard API `navigator.clipboard.writeText()`.
+For convinience (to avoid selecting and coping the password) added "copy" button. On lick it will move generated password into clipboard. This implemented using clipboard API `navigator.clipboard.writeText()`. Not all browsers support this feature, but I did not want to use older `document.execCommand()`.    
+This feature is not available in my live version since it requires a secure origin (either HTTPS, localhost or disabled by running Chrome with a flag). And my page does not have SSL certificate. I'm planing to add function to disable "copy" button after `window.isSecureContext` check.
 
 ## Password strength    
 Password strength is checked in two ways:   
@@ -59,5 +60,5 @@ This is how it looks like in action:
 ***
 <img src="./src/doneScreen.png" />    
      
-You can find live version [here](https://www.thesecurityfactory.be/password-cracking-speed/ "Password cracking speed").     
+You can find live version [here](http://artem-soroka.tk/pages/password/ "Password cracking speed").     
 Thank you.   

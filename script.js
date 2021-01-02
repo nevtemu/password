@@ -58,6 +58,7 @@ function output (pass){
     password.innerHTML = pass;
 }
 function copy() {
+    console.log(navigator.clipboard)
     navigator.clipboard.writeText(password.innerHTML)
     .then(() => {}, (err) =>console.error(`When copied, got error: ${err}`));
 }
