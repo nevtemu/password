@@ -13,7 +13,7 @@
     <div class="heading">Choose desired password parameters:</div>
     <!-- Numbers -->
     <div class="row">
-      <div class="label">Numbers of digits</div>
+      <div class="label">Numbers of digits (0...9)</div>
       <div class="slider">
         <input class="sliderRange" id="number" name="rangeInput" type="range" value="2" min="0" max="10">
         <span class="sliderValue" id="numberValue">0</span>
@@ -21,7 +21,7 @@
     </div>
     <!-- lower letters -->
     <div class="row">
-      <div class="label">Numbers of lower case letters</div>
+      <div class="label">Numbers of lower case letters (a...z)</div>
       <div class="slider">
         <input class="sliderRange" id="lowerCase" name="rangeInput" type="range" value="3" min="0" max="10">
         <span class="sliderValue" id="lowerCaseValue">0</span>
@@ -29,7 +29,7 @@
     </div>
     <!-- upper letters -->
     <div class="row">
-      <div class="label">Numbers of upper case letters</div>
+      <div class="label">Numbers of upper case letters (A...Z)</div>
       <div class="slider">
         <input class="sliderRange" id="upperCase" name="rangeInput" type="range" value="2" min="0" max="10">
         <span class="sliderValue" id="upperCaseValue">0</span>
@@ -37,7 +37,7 @@
     </div>
     <!-- special characters -->
     <div class="row">
-      <div class="label">Numbers of special characters</div>
+      <div class="label">Numbers of special characters (#@%..)</div>
       <div class="slider">
         <input class="sliderRange" id="special" name="rangeInput" type="range" value="1" min="0" max="10">
         <span class="sliderValue" id="specialValue">0</span>
@@ -48,14 +48,23 @@
       <div class="label">Your desired symbol to be included</div>
       <input type="text" name="own" id="own">
     </div>
-
+    <!-- Output -->
+    <div class="heading">Generate, check and copy your password:</div>
     <div class="row">
-      <input type="button" value="Generate" onclick="generate()">
+      <input type="button" class="button" value="Generate" onclick="generate()">
       <div class="output" id="output">
-      </div><input type="button" value="Copy" onclick="copy()">
+      </div><input type="button" class="button" value="Copy" onclick="copy()">
     </div>
-
-    <div class="strength"><span>Your password strength:</span><span id="strength">No password</span></div>
+    <div class="row">
+      <div class="label">Your password strength:</div>
+      <div id="strength">No password</div>
+    </div>
+    <div class="exp">Password difficulty depends on password length and types of characters included.</div>
+    <div class="row">
+      <div class="label">Time to crack you password:</div>
+      <div id="time"></div>
+    </div>
+    <div class="exp">Cracking time calculated based on AWS p3.16xlarge. Cracking power of 632GH/s (according to <a href="https://www.thesecurityfactory.be/password-cracking-speed/">TSF</a>). This means we’re capable of trying a whopping 632.000.000.000 different password combinations per second!</div>
 
 </body>
 </html>

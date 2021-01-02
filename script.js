@@ -1,5 +1,6 @@
 const password = document.querySelector("#output");
 const strength = document.querySelector("#strength");
+const timeToCrack = document.querySelector("#time");
 function generateRandom (what, howMany) {
     let out = "";
     let charLength, charPosition;
@@ -84,9 +85,11 @@ for (let field of range){
 function calculateDifficulty (pass){
     const passLength = pass.length;
     let passChar = 0;
+    // const numberTest = RegExp("^(?=.*\d)");
     const numberTest = RegExp("^(?=.*[0-9])");
     const lowerCaseTest = RegExp("^(?=.*[a-z])");
     const upperCaseTest = RegExp("^(?=.*[A-Z])");
+    // const specialTest = RegExp("^(?=.*[\W])"); // all non-word characters (alphanumeric and underscore)
     const specialTest = RegExp("^(?=.*[!@#%\-\/\;\:\>\<\=\_\`\~\"\|\{\}\$\?\^\*\+\.\&\'\,])");
     if (numberTest.test(pass)){passChar+=10};
     if (lowerCaseTest.test(pass)){passChar+=25};
@@ -97,5 +100,6 @@ function calculateDifficulty (pass){
     let timeToSolve = Number(combinations/CRACKING_POWER); //in seconds
     let difficulty = timeToSolve > 0 ? (timeToSolve > 60? ( timeToSolve > 3600 ? (timeToSolve > 86400 ? (timeToSolve > 31536000? `${Math.ceil(timeToSolve/31536000)} years`: `${Math.ceil(timeToSolve/86400)} days`): `${Math.ceil(timeToSolve/3600)} hrs`): `${Math.ceil(timeToSolve/60)} min`): `${Math.ceil(timeToSolve)} sec`) : `instant`;
     // let timeToSolve = new Date(Number(combinations/CRACKING_POWER) * 1000).toISOString(); 
-    console.log(difficulty);
-}
+    // console.log(difficulty);
+    timeToCrack.innerHTML = difficulty;
+} 
