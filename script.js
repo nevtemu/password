@@ -87,7 +87,6 @@ function calculateDifficulty (pass){
     const CRACKING_POWER = BigInt(632000000000); //amount of combinations per second
     let timeToSolve = Number(combinations/CRACKING_POWER); //in seconds
     let difficulty = timeToSolve > 0 ? (timeToSolve > 60? ( timeToSolve > 3600 ? (timeToSolve > 86400 ? (timeToSolve > 31536000? `${Math.ceil(timeToSolve/31536000)} years`: `${Math.ceil(timeToSolve/86400)} days`): `${Math.ceil(timeToSolve/3600)} hrs`): `${Math.ceil(timeToSolve/60)} min`): `${Math.ceil(timeToSolve)} sec`) : `instant`;
-    // let timeToSolve = new Date(Number(combinations/CRACKING_POWER) * 1000).toISOString(); 
     timeToCrack.innerHTML = difficulty;
     //Styles for difficulty
     timeToCrack.classList="";

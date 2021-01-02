@@ -45,14 +45,16 @@ Strong             |8                             |at least one of each: small l
 Alternatively can use `^(?=.*[\d])` for all digits and `^(?=.*[\W])` for all non-word characters (alphanumeric and underscore).     
 __Based on time to crack the password.__    
 For this check I used `Math.pow()` function to find total number of possible combinations depending on used settings. The more types of characters you select and the longer your password, the more combination can be there with such settings.    
-My initial thought was to add together ranges of all included character types and calculate them to power of password length. But to feature in user preferred symbol input I had to use regular expressions again to test if generated password includes each type of character (since I don't know what type of character user may input).     
-
-
-
-
+My initial thought was to add together ranges of all included character types and calculate them to power of password length. But to feature in user preferred symbol input I had to use regular expressions again to test if generated password includes each type of character (since I don't know what type of character user will input).     
+Then total number of combinations I divide by cracking power (number of combination per second computer can try) to receive time in second to crack the password. I took the number from [here](https://www.thesecurityfactory.be/password-cracking-speed/ "Password cracking speed"). `const CRACKING_POWER = BigInt(632000000000)`   
+I wanted to handle the time with `Date().toISOString()`, but results could vary from less than 1 second to trillions of years, so for better representation used series of if-blocks to analize the received number and convert it to appropriate metrics.
+Also certain strong password settings give number of combination well above `Number.MAX_SAFE_INTEGER`, so I used `BinInt()` to handle them.
 
 ## User interface
 This is how it looks like in action:   
-<img src="./src/typesOfOperation.png" />
-Yo ucan find live version here.   
+<img src="./src/screen.png" />    
+***
+<img src="./src/doneScreen.png" />    
+     
+You can find live version [here](https://www.thesecurityfactory.be/password-cracking-speed/ "Password cracking speed").     
 Thank you.   
